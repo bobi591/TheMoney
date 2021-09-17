@@ -33,22 +33,8 @@ namespace TheMoney.Modules.Data.Controllers
 
         private Shared.Entities.User GetCurrentUserInfoFromDatabase()
         {
-            string username = GenerateUserObjectFromHttpContextUserClaims().Username;
-            return repository.GetUserWhere(x => x.Username == username);
-        }
-
-        private Shared.Entities.User GenerateUserObjectFromHttpContextUserClaims()
-        {
-            IEnumerable<Claim> claims = HttpContext.User.Claims;
-            Shared.Entities.User currentUser = new Shared.Entities.User()
-            {
-                Email = claims.Where(claim => claim.Type == Shared.ClaimTypes.EMAIL).FirstOrDefault().Value,
-                Name = claims.Where(claim => claim.Type == Shared.ClaimTypes.NAME).FirstOrDefault().Value,
-                Username = claims.Where(claim => claim.Type == Shared.ClaimTypes.USERNAME).FirstOrDefault().Value,
-                ZoneInfo = claims.Where(claim => claim.Type == Shared.ClaimTypes.ZONEINFO).FirstOrDefault().Value,
-            };
-
-            return currentUser;
+            string email = HttpContext.User.Claims.Where(claim => claim.Type == Shared.ClaimTypes.EMAIL).FirstOrDefault().Value;
+            return repository.GetUserWhere(x => x.Username == email);
         }
     }
 }
