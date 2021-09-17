@@ -17,5 +17,11 @@ namespace TheMoney.Shared.Entities
         public Chart GetChartWhere(Expression<Func<Chart, bool>> whereExpression);
         public void ReplaceChartWhere(Expression<Func<Chart, bool>> whereExpression, Chart chartToUpdate);
         public void InsertChart(Chart chartToUpdate);
+
+        /* Monetary transaction queries */
+        public IEnumerable<MonetaryTransaction> GetMonetaryTransactionsWhere(Expression<Func<MonetaryTransaction, bool>> whereExpression);
+        public MonetaryTransaction GetMonetaryTransactionWhere(Expression<Func<MonetaryTransaction, bool>> whereExpression);
+        public void InsertMonetaryTransaction(MonetaryTransaction monetaryTransactionToUpdate);
+        public void InsertMonetaryTransactions(IEnumerable<MonetaryTransaction> monetaryTransactionsToUpdate);
     }
 }

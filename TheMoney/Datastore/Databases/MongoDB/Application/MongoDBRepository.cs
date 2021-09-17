@@ -85,5 +85,27 @@ namespace TheMoney.Datastore.Databases.MongoDB.Application
                 this._mongoDBServices.Charts.ReplaceOne(whereExpression, chartToUpdate);
             }
         }
+
+        public IEnumerable<MonetaryTransaction> GetMonetaryTransactionsWhere(Expression<Func<MonetaryTransaction, bool>> whereExpression)
+        {
+            return
+            this._mongoDBServices.MonetaryTransactions.Find(whereExpression).ToEnumerable();
+        }
+
+        public MonetaryTransaction GetMonetaryTransactionWhere(Expression<Func<MonetaryTransaction, bool>> whereExpression)
+        {
+            return
+            this._mongoDBServices.MonetaryTransactions.Find(whereExpression).FirstOrDefault();
+        }
+
+        public void InsertMonetaryTransaction(MonetaryTransaction monetaryTransactionToUpdate)
+        {
+            this._mongoDBServices.MonetaryTransactions.InsertOne(monetaryTransactionToUpdate);
+        }
+
+        public void InsertMonetaryTransactions(IEnumerable<MonetaryTransaction> monetaryTransactionsToUpdate)
+        {
+            this._mongoDBServices.MonetaryTransactions.InsertMany(monetaryTransactionsToUpdate);
+        }
     }
 }

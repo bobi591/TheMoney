@@ -12,6 +12,7 @@ namespace TheMoney.Datastore.Databases.MongoDB.Application
         /* Tables/Collections declarations (TDocument is shared entity) */
         public IMongoCollection<Shared.Entities.User> Users { get; }
         public IMongoCollection<Shared.Entities.Chart> Charts { get; set; }
+        public IMongoCollection<Shared.Entities.MonetaryTransaction> MonetaryTransactions { get; set; }
 
         public MongoDBServices(IMongoDBSettings applicationDatabaseSettings)
         {
@@ -20,6 +21,7 @@ namespace TheMoney.Datastore.Databases.MongoDB.Application
 
             Users = _applicationDatabase.GetCollection<User>("users");
             Charts = _applicationDatabase.GetCollection<Chart>("charts");
+            MonetaryTransactions = _applicationDatabase.GetCollection<MonetaryTransaction>("monetarytransactions");
         }
 
         public IMongoCollection<object> GetDocumentCollection(EntityBase applicationDocument)
