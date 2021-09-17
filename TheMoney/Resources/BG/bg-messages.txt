@@ -19,4 +19,4 @@ page.user.details.data_availability = Наличност на данни
 #Home page
 page.home.data_imports = Последно добавени данни
 page.home.import_more_data = Добави още данни
-
+page.home.import_more_data.upload = Качи
