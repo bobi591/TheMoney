@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TheMoney.Shared.Entities;
 
@@ -20,6 +22,14 @@ namespace TheMoney.Modules.Home.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Error()
+        {
+            IExceptionHandlerFeature exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>();
+            Exception? exceptionThrown = exceptionHandlerFeature.Error;
+            return View(exceptionThrown);
         }
 
         [Authorize]

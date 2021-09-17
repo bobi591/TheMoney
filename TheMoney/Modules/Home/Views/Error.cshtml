@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Oops!";
+    Layout = "/Shared/Views/_Layout.cshtml";
+}
+
+@model Exception
+
+<div class="row d-flex justify-content-center">
+    <img src="https://pbs.twimg.com/media/CgldEYQU8AA2MPn.jpg" style="width: 20%;"/>
+</div>
+<div class="row d-flex justify-content-center pt-4">
+    <div class="card">
+        <div class="card-body text-center">
+            <h5 class="card-title">@Model.GetType().Name</h5>
+            <p class="card-text">@Model.Message</p>
+        </div>
+    </div>
+</div>
