@@ -18,8 +18,8 @@ namespace TheMoney.Datastore.Databases.MongoDB.Application
             _mongoClient = new MongoClient(applicationDatabaseSettings.ConnectionString);
             _applicationDatabase = _mongoClient.GetDatabase(applicationDatabaseSettings.DatabaseName);
 
-            Users = _applicationDatabase.GetCollection<User>("Users");
-            Charts = _applicationDatabase.GetCollection<Chart>("Charts");
+            Users = _applicationDatabase.GetCollection<User>("users");
+            Charts = _applicationDatabase.GetCollection<Chart>("charts");
         }
 
         public IMongoCollection<object> GetDocumentCollection(EntityBase applicationDocument)
