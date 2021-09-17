@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    Layout = "/Shared/Views/_Layout.cshtml";
+}
+
+@model TheMoney.Shared.Entities.User
+
+<div class="row">
+    <div class="col-6">
+        <div class="my-3 p-3 bg-blue rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">OKTA Information</h6>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.Username</strong>
+                </p>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.Name</strong>
+                </p>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.ZoneInfo</strong>
+                </p>
+            </div>
+            <small class="d-block text-right mt-3">
+                <a href="#">All updates</a>
+            </small>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="my-3 p-3 bg-blue rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Data Availability</h6>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.Username</strong>
+                </p>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.Name</strong>
+                </p>
+            </div>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">@Model.ZoneInfo</strong>
+                </p>
+            </div>
+            <small class="d-block text-right mt-3">
+                <a href="#">All updates</a>
+            </small>
+        </div>
+    </div>
+</div>

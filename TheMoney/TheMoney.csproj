@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Okta.AspNetCore" Version="3.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\" />
+    <None Remove="Shared\Views\" />
+    <None Remove="Modules\" />
+    <None Remove="Modules\Home\" />
+    <None Remove="Modules\Home\Views\" />
+    <None Remove="Modules\Home\Controllers\" />
+    <None Remove="Datastore\" />
+    <None Remove="Datastore\Databases\" />
+    <None Remove="MongoDB.Driver" />
+    <None Remove="Modules\User\" />
+    <None Remove="Modules\User\Controllers\" />
+    <None Remove="Modules\User\Views\" />
+    <None Remove="Shared\Entities\" />
+    <None Remove="Datastore\Databases\MongoDB\" />
+    <None Remove="Datastore\Databases\MongoDB\Application\" />
+    <None Remove="Modules\User\Actions\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Okta.AspNetCore" />
+    <None Remove="Modules\Data\" />
+    <None Remove="Modules\Data\Controllers\" />
+    <None Remove="Modules\Data\Views\" />
+    <None Remove="Modules\Data\Actions\" />
+    <None Remove="Modules\Data\Actions\DSKBank\" />
+    <None Remove="Modules\Chart\" />
+    <None Remove="Modules\Chart\Controllers\" />
+    <None Remove="Modules\Chart\Views\" />
+    <None Remove="Shared\Entities\Validators\" />
+    <None Remove="Shared\Entities\Validators\Implementations\" />
+    <None Remove="Shared\AlertServices\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\BG\" />
+    <None Remove="Resources\EN\" />
+    <None Remove="Shared\AlertServices\Messages\" />
+    <None Remove="Resources\BG\bg-messages.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\" />
+    <Folder Include="Shared\Views\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\Home\" />
+    <Folder Include="Modules\Home\Views\" />
+    <Folder Include="Modules\Home\Controllers\" />
+    <Folder Include="Datastore\" />
+    <Folder Include="Datastore\Databases\" />
+    <Folder Include="Modules\User\" />
+    <Folder Include="Modules\User\Controllers\" />
+    <Folder Include="Modules\User\Views\" />
+    <Folder Include="Shared\Entities\" />
+    <Folder Include="Datastore\Databases\MongoDB\" />
+    <Folder Include="Datastore\Databases\MongoDB\Application\" />
+    <Folder Include="Modules\User\Actions\" />
+    <Folder Include="Modules\Data\" />
+    <Folder Include="Modules\Data\Controllers\" />
+    <Folder Include="Modules\Data\Views\" />
+    <Folder Include="Modules\Data\Actions\" />
+    <Folder Include="Modules\Data\Actions\DSKBank\" />
+    <Folder Include="Modules\Chart\" />
+    <Folder Include="Modules\Chart\Controllers\" />
+    <Folder Include="Modules\Chart\Views\" />
+    <Folder Include="Shared\Entities\Validators\" />
+    <Folder Include="Shared\Entities\Validators\Implementations\" />
+    <Folder Include="Shared\UXServices\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\BG\" />
+    <Folder Include="Resources\EN\" />
+    <Folder Include="Shared\UXServices\Messages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BG\bg-messages.resources">
+      <LogicalName>bg-messages.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

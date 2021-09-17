@@ -1,0 +1,22 @@
+﻿#Navbar
+navbar.home = Начало
+navbar.privacy = Поверителност
+navbar.charts = Диаграми
+
+#Messages
+message.cannot_be_emtpy = {0} трябва да има стойност.
+message.is_created_successfully = Създаването на {0} е успешно.
+message.cannot_be_created = Създаването на {0} е неуспешно.
+
+#Charts page
+page.chart.charts.new_chart = Нова диаграма
+page.chart.charts.create_chart = Създай диаграма
+
+#User Details page
+page.user.details.okta_information = ОКТА потребителска информация
+page.user.details.data_availability = Наличност на данни
+
+#Home page
+page.home.data_imports = Последно добавени данни
+page.home.import_more_data = Добави още данни
+

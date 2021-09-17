@@ -1,0 +1,9 @@
+﻿#Navbar
+navbar.home = Home
+navbar.privacy = Privacy
+navbar.charts = Charts
+
+#messages
+message.cannot_be_emtpy = {0} cannot be empty.
+message.is_created_successfully = {0} is created successfully.
+message.cannot_be_created = {0} cannot be created.

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMoney", "TheMoney\TheMoney.csproj", "{2334EEEB-382B-4162-A188-6FB25D5F93AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMoneyTests", "TheMoneyTests\TheMoneyTests.csproj", "{E2851F1B-A2AE-4233-8931-F8DB38E35DC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2334EEEB-382B-4162-A188-6FB25D5F93AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2334EEEB-382B-4162-A188-6FB25D5F93AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2334EEEB-382B-4162-A188-6FB25D5F93AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2334EEEB-382B-4162-A188-6FB25D5F93AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2851F1B-A2AE-4233-8931-F8DB38E35DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2851F1B-A2AE-4233-8931-F8DB38E35DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2851F1B-A2AE-4233-8931-F8DB38E35DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2851F1B-A2AE-4233-8931-F8DB38E35DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08F4AB7D-70BA-4A36-AD3B-67B7ECEB31EB}
+	EndGlobalSection
+EndGlobal
