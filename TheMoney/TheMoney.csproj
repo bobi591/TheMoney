@@ -10,6 +10,7 @@
     <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Okta.AspNetCore" Version="3.5.0" />
+    <PackageReference Include="CsvHelper" Version="27.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +36,6 @@
     <None Remove="Modules\Data\Controllers\" />
     <None Remove="Modules\Data\Views\" />
     <None Remove="Modules\Data\Actions\" />
-    <None Remove="Modules\Data\Actions\DSKBank\" />
     <None Remove="Modules\Chart\" />
     <None Remove="Modules\Chart\Controllers\" />
     <None Remove="Modules\Chart\Views\" />
@@ -47,6 +47,8 @@
     <None Remove="Resources\EN\" />
     <None Remove="Shared\AlertServices\Messages\" />
     <None Remove="Resources\BG\bg-messages.resources" />
+    <None Remove="Modules\Data\Actions\RevolutImport\" />
+    <None Remove="CsvHelper" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\" />
@@ -68,7 +70,6 @@
     <Folder Include="Modules\Data\Controllers\" />
     <Folder Include="Modules\Data\Views\" />
     <Folder Include="Modules\Data\Actions\" />
-    <Folder Include="Modules\Data\Actions\DSKBank\" />
     <Folder Include="Modules\Chart\" />
     <Folder Include="Modules\Chart\Controllers\" />
     <Folder Include="Modules\Chart\Views\" />
@@ -79,6 +80,7 @@
     <Folder Include="Resources\BG\" />
     <Folder Include="Resources\EN\" />
     <Folder Include="Shared\UXServices\Messages\" />
+    <Folder Include="Modules\Data\Actions\Revolut\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BG\bg-messages.resources">
