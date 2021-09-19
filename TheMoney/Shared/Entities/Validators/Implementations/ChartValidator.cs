@@ -20,7 +20,7 @@ namespace TheMoney.Shared.Entities.Validators.Implementations
         {
             foreach(PropertyInfo chartProperty in typeof(Chart).GetProperties())
             {
-                if(chartProperty.GetValue(entityToValidate) == null)
+                if (chartProperty.GetValue(entityToValidate) == null && chartProperty.Name != "MeasureData" && chartProperty.Name != "DimensionData")
                 {
                     translationService.ShowWarning(controller, "message.cannot_be_emtpy", CamelCaseToSentenceCase.Convert(chartProperty.Name));
                     return false;

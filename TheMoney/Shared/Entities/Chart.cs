@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheMoney.Shared.Entities
 {
@@ -13,6 +14,13 @@ namespace TheMoney.Shared.Entities
         public List<string> Labels { get; set; }
         public string BackgroundColor { get; set; }
         public string BorderColor { get; set; }
-        public List<float> Data { get; set; } = new List<float>();
+        public string Measure { get; set; }
+        public string Dimension { get; set; }
+
+        [NotMapped]
+        public List<string> MeasureData { get; set; }
+
+        [NotMapped]
+        public List<string> DimensionData { get; set; }
     }
 }

@@ -135,19 +135,20 @@
                 string generatedDataVarName = chart.Name + "ChartData";
                 string generatedConfigVarName = chart.Name + "ChartConfig";
 
-                string generatedData = "";
-                if (chart.Data != null)
+                string generatedMeasureData = "";
+                if (chart.MeasureData != null)
                 {
-                    generatedData = "[" + string.Join(", ", chart.Data) + "]";
+                    generatedMeasureData = "[" + string.Join(", ", chart.MeasureData) + "]";
+                }
+
+                string generatedDimensionData = "";
+                if (chart.DimensionData != null)
+                {
+                    generatedDimensionData = Json.Serialize(chart.DimensionData).ToString();
                 }
             }
-            const @generatedLabelsVarName = [
-                'January',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
+            const @generatedLabelsVarName =[
+                @Html.Raw(generatedDimensionData)
             ];
             const @generatedDataVarName = {
                 labels: @generatedLabelsVarName,
@@ -155,7 +156,7 @@
                     label: '@chart.Label',
                     backgroundColor: '@chart.BackgroundColor',
                     borderColor: '@chart.BorderColor',
-                    data: @generatedData,
+                    data: @generatedMeasureData,
                 }]
             };
 
