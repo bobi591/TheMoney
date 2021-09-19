@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,11 +23,11 @@ namespace TheMoney.Modules.Data.Controllers
 
         [Authorize]
         [ValidateAntiForgeryToken]
-        public IActionResult Import(IFormFile dataFile)
+        public async Task<IActionResult> Import(IFormFile dataFile)
         {
             Shared.Entities.User currentUser = GetCurrentUserInfoFromDatabase();
             ImportAction importAction = new ImportAction(currentUser, dataFile, repository, ImportSource.REVOLUT);
-            importAction.Execute();
+            await importAction.Execute();
 
             return Redirect("/");
         }

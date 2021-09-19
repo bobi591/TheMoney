@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -46,9 +45,9 @@ namespace TheMoney.Modules.Data.Actions.Revolut
                         parsedMonetaryTransactions.Add(monetaryTransactionParsedRecord);
                     }
 
-                    List<MonetaryTransaction> cleanedUpMonetaryTransactions = RemoveParsedRecordsAlreadyInDatabase(parsedMonetaryTransactions);
+                    List<MonetaryTransaction> transactionsNotInDatabase = await GetNonExistingTransactions(parsedMonetaryTransactions);
 
-                    repository.InsertMonetaryTransactions(cleanedUpMonetaryTransactions);
+                    repository.InsertMonetaryTransactions(transactionsNotInDatabase);
                 }
             }
         }
@@ -86,13 +85,14 @@ namespace TheMoney.Modules.Data.Actions.Revolut
             }
         }
 
-        private List<MonetaryTransaction> RemoveParsedRecordsAlreadyInDatabase(List<MonetaryTransaction> parsedMonetaryTransactions)
+        //Returns the transactions that are not already in the database
+        private async Task<List<MonetaryTransaction>> GetNonExistingTransactions(List<MonetaryTransaction> parsedMonetaryTransactions)
         {
-            List<MonetaryTransaction> cleanedUpParsedRecords = new List<MonetaryTransaction>();
+            List<MonetaryTransaction> unqiueRecords = new List<MonetaryTransaction>();
 
             foreach(MonetaryTransaction parsedRecord in parsedMonetaryTransactions)
             {
-                bool isNotUnique = repository.GetMonetaryTransactionsWhere
+                bool isNotUniqueRecord = repository.GetMonetaryTransactionsWhere
                     (x =>
                         x.OwnerEmail == parsedRecord.OwnerEmail &&
                         x.DataSource == parsedRecord.DataSource &&
@@ -101,14 +101,14 @@ namespace TheMoney.Modules.Data.Actions.Revolut
                         x.Currency == parsedRecord.Currency
                     ).Any();
 
-                if(!isNotUnique)
+                if (!isNotUniqueRecord)
                 {
-                    cleanedUpParsedRecords.Add(parsedRecord);
+                    unqiueRecords.Add(parsedRecord);
                 }
 
             }
 
-            return cleanedUpParsedRecords;
+            return unqiueRecords;
         }
     }
 }
