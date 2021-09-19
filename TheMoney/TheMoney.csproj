@@ -49,6 +49,9 @@
     <None Remove="Resources\BG\bg-messages.resources" />
     <None Remove="Modules\Data\Actions\RevolutImport\" />
     <None Remove="CsvHelper" />
+    <None Remove="Shared\Entities\Dimensions\" />
+    <None Remove="Modules\Chart\Models\" />
+    <None Remove="Shared\Entities\Dimensions %28copy%29\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\" />
@@ -81,6 +84,9 @@
     <Folder Include="Resources\EN\" />
     <Folder Include="Shared\UXServices\Messages\" />
     <Folder Include="Modules\Data\Actions\Revolut\" />
+    <Folder Include="Shared\Entities\Dimensions\" />
+    <Folder Include="Modules\Chart\Models\" />
+    <Folder Include="Shared\Entities\Measures\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BG\bg-messages.resources">

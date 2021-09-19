@@ -4,7 +4,7 @@
     Layout = "/Shared/Views/_Layout.cshtml";
 }
 
-@model IEnumerable<TheMoney.Shared.Entities.Chart>
+@model TheMoney.Modules.Chart.Models.ChartsPageModel
 @inject TheMoney.Shared.UXServices.ITranslationService translationService
 
 
@@ -46,6 +46,40 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="media text-muted pt-3 col">
+                        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <strong class="d-block text-gray-dark">Measure: </strong>
+                            <select class="form-control form-control-sm" name="measure">
+                                @{
+                                    foreach(var chartableEntity in Model.ChartableEntities)
+                                    {
+                                        foreach(var measure in chartableEntity.GetMeasures())
+                                        {
+                                            <option value="@measure.FieldName">@measure.Description</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </p>
+                    </div>
+                    <div class="media text-muted pt-3 col">
+                        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <strong class="d-block text-gray-dark">Dimension: </strong>
+                            <select class="form-control form-control-sm" name="dimension">
+                                @{
+                                    foreach (var chartableEntity in Model.ChartableEntities)
+                                    {
+                                        foreach (var dimension in chartableEntity.GetDimensions())
+                                        {
+                                            <option value="@dimension.FieldName">@dimension.Description</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="media text-muted pt-3 col-12">
                         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                             <strong class="d-block text-gray-dark">Labels (separated by spaces): </strong>
@@ -78,7 +112,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @{
-    foreach (var chart in Model)
+    foreach (var chart in Model.Charts)
     {
         <div class="row">
             <div class="col-6">
