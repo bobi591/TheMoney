@@ -150,6 +150,7 @@
             const @generatedLabelsVarName =[
                 @Html.Raw(generatedDimensionData)
             ];
+
             const @generatedDataVarName = {
                 labels: @generatedLabelsVarName,
                 datasets: [{
@@ -163,7 +164,8 @@
             const @generatedConfigVarName = {
                 type: '@chart.Type',
                 data: @generatedDataVarName,
-                options: {}
+                options: {
+                }
             };
 
             var dataSizePerDateChart = new Chart(

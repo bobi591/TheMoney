@@ -52,6 +52,7 @@
     <None Remove="Shared\Entities\Dimensions\" />
     <None Remove="Modules\Chart\Models\" />
     <None Remove="Shared\Entities\Dimensions %28copy%29\" />
+    <None Remove="Modules\Chart\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\" />
@@ -87,6 +88,7 @@
     <Folder Include="Shared\Entities\Dimensions\" />
     <Folder Include="Modules\Chart\Models\" />
     <Folder Include="Shared\Entities\Measures\" />
+    <Folder Include="Modules\Chart\Data\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BG\bg-messages.resources">

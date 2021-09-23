@@ -1,0 +1,70 @@
+﻿@{
+
+    ViewData["Title"] = "Chart ";
+    Layout = "/Shared/Views/_Layout.cshtml";
+}
+
+@model TheMoney.Shared.Entities.Chart
+@inject TheMoney.Shared.UXServices.ITranslationService translationService
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-3 p-3 bg-blue rounded box-shadow">
+            <h6 class="border-bottom border-gray pb-2 mb-0">@Model.Description (@Model.Name)</h6>
+            <div class="media text-muted pt-3">
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <div>
+                        <canvas id="@Model.Name"></canvas>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+            @{
+                string generatedLabelsVarName = Model.Name + "ChartLabels";
+                string generatedDataVarName = Model.Name + "ChartData";
+                string generatedConfigVarName = Model.Name + "ChartConfig";
+
+                string generatedMeasureData = "";
+                if (Model.MeasureData != null)
+                {
+                    generatedMeasureData = "[" + string.Join(", ", Model.MeasureData) + "]";
+                }
+
+                string generatedDimensionData = "";
+                if (Model.DimensionData != null)
+                {
+                    generatedDimensionData = Json.Serialize(Model.DimensionData).ToString();
+                }
+            }
+            const @generatedLabelsVarName =[
+                @Html.Raw(generatedDimensionData)
+            ];
+
+            const @generatedDataVarName = {
+                labels: @generatedLabelsVarName,
+                datasets: [{
+                    label: '@Model.Label',
+                    backgroundColor: '@Model.BackgroundColor',
+                    borderColor: '@Model.BorderColor',
+                    data: @generatedMeasureData,
+                }]
+            };
+
+            const @generatedConfigVarName = {
+                type: '@Model.Type',
+                data: @generatedDataVarName,
+                options: {
+                }
+            };
+
+            var dataSizePerDateChart = new Chart(
+                document.getElementById('@Model.Name'),
+                @generatedConfigVarName
+            );
+</script>
