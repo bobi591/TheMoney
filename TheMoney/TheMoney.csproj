@@ -53,6 +53,9 @@
     <None Remove="Modules\Chart\Models\" />
     <None Remove="Shared\Entities\Dimensions %28copy%29\" />
     <None Remove="Modules\Chart\Data\" />
+    <None Remove="Shared\UX\" />
+    <None Remove="Shared\UX\Alerts\" />
+    <None Remove="Shared\UX\Translations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\" />
@@ -79,16 +82,17 @@
     <Folder Include="Modules\Chart\Views\" />
     <Folder Include="Shared\Entities\Validators\" />
     <Folder Include="Shared\Entities\Validators\Implementations\" />
-    <Folder Include="Shared\UXServices\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\BG\" />
     <Folder Include="Resources\EN\" />
-    <Folder Include="Shared\UXServices\Messages\" />
     <Folder Include="Modules\Data\Actions\Revolut\" />
     <Folder Include="Shared\Entities\Dimensions\" />
     <Folder Include="Modules\Chart\Models\" />
     <Folder Include="Shared\Entities\Measures\" />
     <Folder Include="Modules\Chart\Data\" />
+    <Folder Include="Shared\UX\" />
+    <Folder Include="Shared\UX\Alerts\" />
+    <Folder Include="Shared\UX\Translations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BG\bg-messages.resources">

@@ -5,13 +5,13 @@
 }
 
 @model TheMoney.Modules.Chart.Models.ChartsPageModel
-@inject TheMoney.Shared.UXServices.ITranslationService translationService
+@inject TheMoney.Shared.UX.Translations.ITranslationsService translationsService
 
 
 <div class="row">
     <div class="col-5">
         <div class="my-3 p-3 bg-blue rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">@translationService.GetTranslation("page.chart.charts.new_chart")</h6>
+            <h6 class="border-bottom border-gray pb-2 mb-0">@translationsService.GetTranslation("page.chart.charts.new_chart")</h6>
             <form method="post" action="/Chart/Create">
                 @Html.AntiForgeryToken()
                 <div class="row">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="row pt-3 justify-content-center">
-                    <input type="submit" class="btn btn-success btn-sm" value="@translationService.GetTranslation("page.chart.charts.create_chart")" />
+                    <input type="submit" class="btn btn-success btn-sm" value="@translationsService.GetTranslation("page.chart.charts.create_chart")" />
                 </div>
             </form>
         </div>

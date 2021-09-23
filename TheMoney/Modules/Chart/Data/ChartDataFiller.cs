@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using TheMoney.Shared.Entities;
-using TheMoney.Shared.UXServices;
+using TheMoney.Shared.UX.Alerts;
 
 namespace TheMoney.Modules.Chart.Data
 {
     public class ChartDataFiller
     {
         private IRepository repository;
-        private ITranslationService translationService;
+        private IUserAlertsService userAlertsService;
         private Shared.Entities.User user;
 
-        public ChartDataFiller(Shared.Entities.User user, IRepository repository, ITranslationService translationService)
+        public ChartDataFiller(Shared.Entities.User user, IRepository repository, IUserAlertsService userAlertsService)
         {
             this.repository = repository;
-            this.translationService = translationService;
+            this.userAlertsService = userAlertsService;
             this.user = user;
         }
 

@@ -11,12 +11,10 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Okta.AspNetCore;
 using TheMoney.Datastore.Databases.MongoDB.Application;
 using TheMoney.Shared.Entities;
-using TheMoney.Shared.UXServices;
-using TheMoney.Shared.UXServices.Messages;
+using TheMoney.Shared.UX.Translations;
 
 namespace TheMoney
 {
@@ -41,7 +39,7 @@ namespace TheMoney
             ConfigureOAuthService(ref services);
 
             //Configure the Frontend Translation Service
-            ConfigureTranslationService(ref services);
+            ConfigureTranslationsService(ref services);
 
             //Adds custom paths for shared or module specific views
             services.Configure<RazorViewEngineOptions>(o =>
@@ -131,14 +129,14 @@ namespace TheMoney
         }
 
         //This method is used to configure the frontend alert service
-        private void ConfigureTranslationService(ref IServiceCollection services)
+        private void ConfigureTranslationsService(ref IServiceCollection services)
         {
             string language = "bg";
             ResourceManager translationsResourceManager = new ResourceManager(language + "-messages", Assembly.GetEntryAssembly());
 
-            IMessagesResource messagesResource = new MessagesResource(translationsResourceManager);
+            ITranslationsService messagesResource = new TranslationsService(translationsResourceManager);
 
-            services.AddSingleton<ITranslationService>(new TranslationService(messagesResource));
+            services.AddSingleton<ITranslationsService>(messagesResource);
         }
     }
 }

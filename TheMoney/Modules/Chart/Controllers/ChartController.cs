@@ -6,7 +6,8 @@ using TheMoney.Modules.Chart.Data;
 using TheMoney.Modules.Chart.Models;
 using TheMoney.Shared.Entities;
 using TheMoney.Shared.Entities.Validators;
-using TheMoney.Shared.UXServices;
+using TheMoney.Shared.UX.Alerts;
+using TheMoney.Shared.UX.Translations;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,12 +16,14 @@ namespace TheMoney.Modules.Chart.Controllers
     public class ChartController : Controller
     {
         private IRepository repository;
-        private ITranslationService translationService;
+        private ITranslationsService translationsService;
+        private IUserAlertsService userAlertsService;
 
-        public ChartController(IRepository repository, ITranslationService translationService)
+        public ChartController(IRepository repository, ITranslationsService translationsService)
         {
             this.repository = repository;
-            this.translationService = translationService;
+            this.translationsService = translationsService;
+            this.userAlertsService = new UserAlertsService(this, translationsService);
         }
 
         [Authorize]
@@ -33,7 +36,7 @@ namespace TheMoney.Modules.Chart.Controllers
             chartableEntities.Add(new MonetaryTransaction());
 
 
-            ChartDataFiller chartDataFiller = new ChartDataFiller(currentUser, repository, translationService);
+            ChartDataFiller chartDataFiller = new ChartDataFiller(currentUser, repository, userAlertsService);
             chartDataFiller.PopulateChartsWithData(allCharts);
 
             ChartsPageModel pageModel = new ChartsPageModel(allCharts, chartableEntities);
@@ -47,7 +50,7 @@ namespace TheMoney.Modules.Chart.Controllers
             var chart = repository.GetChartWhere(x => x.Name == name);
             Shared.Entities.User currentUser = GetCurrentUserInfoFromDatabase();
 
-            ChartDataFiller chartDataFiller = new ChartDataFiller(currentUser, repository, translationService);
+            ChartDataFiller chartDataFiller = new ChartDataFiller(currentUser, repository, userAlertsService);
             chartDataFiller.PopulateChartWithData(chart);
 
             return View(chart);
@@ -58,7 +61,7 @@ namespace TheMoney.Modules.Chart.Controllers
         [HttpPost]
         public IActionResult Create([FromForm]Shared.Entities.Chart chart)
         {
-            IEntityValidator<Shared.Entities.Chart> chartValidator = new EntityValidatorFactory<Shared.Entities.Chart>().CreateValidatorInstance(this, translationService);
+            IEntityValidator<Shared.Entities.Chart> chartValidator = new EntityValidatorFactory<Shared.Entities.Chart>().CreateValidatorInstance(userAlertsService);
 
             bool isChartValidationOK = chartValidator.Validate(chart);
 

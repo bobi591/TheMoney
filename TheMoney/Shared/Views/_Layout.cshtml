@@ -2,7 +2,7 @@
     string currentUserFullName = Context.User.Identities.First().Name;
 }
 
-@inject TheMoney.Shared.UXServices.ITranslationService translationService
+@inject TheMoney.Shared.UX.Translations.ITranslationsService translationsService
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +27,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/">@translationService.GetTranslation("navbar.home")</a>
+                            <a class="nav-link text-dark" href="/">@translationsService.GetTranslation("navbar.home")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Chart/Charts">@translationService.GetTranslation("navbar.charts")</a>
+                            <a class="nav-link text-dark" href="/Chart/Charts">@translationsService.GetTranslation("navbar.charts")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Privacy">@translationService.GetTranslation("navbar.privacy")</a>
+                            <a class="nav-link text-dark" href="/Privacy">@translationsService.GetTranslation("navbar.privacy")</a>
                         </li>
                     </ul>
                 </div>

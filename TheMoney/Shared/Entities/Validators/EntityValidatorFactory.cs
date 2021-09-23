@@ -1,19 +1,19 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using TheMoney.Shared.Entities.Validators.Implementations;
-using TheMoney.Shared.UXServices;
+using TheMoney.Shared.UX.Alerts;
 
 namespace TheMoney.Shared.Entities.Validators
 {
     public class EntityValidatorFactory<T> where T : EntityBase?
     {
-        public IEntityValidator<T> CreateValidatorInstance(Controller controller, ITranslationService translationService)
+        public IEntityValidator<T> CreateValidatorInstance(IUserAlertsService userAlertsService)
         {
             Type genericParameterType = typeof(T);
 
             if(genericParameterType == typeof(Chart))
             {
-                IEntityValidator<Chart> chartValidator = new ChartValidator(controller, translationService);
+                IEntityValidator<Chart> chartValidator = new ChartValidator(userAlertsService);
                 return (IEntityValidator<T>)chartValidator;
             }
             else

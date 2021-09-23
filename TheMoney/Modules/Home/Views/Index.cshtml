@@ -3,7 +3,7 @@
     Layout = "/Shared/Views/_Layout.cshtml";
 }
 
-@inject TheMoney.Shared.UXServices.ITranslationService translationService
+@inject TheMoney.Shared.UX.Translations.ITranslationsService translationsService
 
 <!-- Data size per date chart -->
 <div class="row">
@@ -18,7 +18,7 @@
     <!-- Data import box -->
     <div class="col-6">
         <div class="my-3 p-3 bg-blue rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">@translationService.GetTranslation("page.home.data_imports")</h6>
+            <h6 class="border-bottom border-gray pb-2 mb-0">@translationsService.GetTranslation("page.home.data_imports")</h6>
             <div class="media text-muted pt-3">
                 <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">test.xml</strong>
@@ -40,12 +40,12 @@
         </div>
         <!-- Data import box -->
         <div class="my-3 p-3 bg-blue rounded box-shadow">
-            <h6 class="border-bottom border-gray pb-2 mb-0">@translationService.GetTranslation("page.home.import_more_data")</h6>
+            <h6 class="border-bottom border-gray pb-2 mb-0">@translationsService.GetTranslation("page.home.import_more_data")</h6>
             <form method="post" enctype="multipart/form-data" action="/Data/Import">
                 <div class="custom-file">
                     @Html.AntiForgeryToken()
                     <input type="file" class="btn btn-light" id="dataFile" name="dataFile" accept=".xml,.csv">
-                    <input type="submit" class="btn btn-success btn-sm" value="@translationService.GetTranslation("page.home.import_more_data.upload")"/>
+                    <input type="submit" class="btn btn-success btn-sm" value="@translationsService.GetTranslation("page.home.import_more_data.upload")"/>
                 </div>
             </form>
         </div>

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
-using TheMoney.Shared.UXServices;
+using TheMoney.Shared.UX.Alerts;
 
 namespace TheMoney.Shared.Entities.Validators.Implementations
 {
     public class ChartValidator : IEntityValidator<Chart>
     {
-        private ITranslationService translationService;
-        private Controller controller;
+        private IUserAlertsService userAlertsService;
 
-        public ChartValidator(Controller controller, ITranslationService translationService)
+        public ChartValidator(IUserAlertsService userAlertsService)
         {
-            this.translationService = translationService;
-            this.controller = controller;
+            this.userAlertsService = userAlertsService;
         }
 
         public bool Validate(Chart entityToValidate)
@@ -22,12 +20,12 @@ namespace TheMoney.Shared.Entities.Validators.Implementations
             {
                 if (chartProperty.GetValue(entityToValidate) == null && chartProperty.Name != "MeasureData" && chartProperty.Name != "DimensionData")
                 {
-                    translationService.ShowWarning(controller, "message.cannot_be_emtpy", CamelCaseToSentenceCase.Convert(chartProperty.Name));
+                    userAlertsService.ShowWarning("message.cannot_be_emtpy", CamelCaseToSentenceCase.Convert(chartProperty.Name));
                     return false;
                 }
             }
 
-            translationService.ShowInfo(controller, "message.is_created_successfully", entityToValidate.Name);
+            userAlertsService.ShowInfo("message.is_created_successfully", entityToValidate.Name);
             return true;
         }
     }
